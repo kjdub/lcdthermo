@@ -5,7 +5,7 @@
 #define dht_pin 2 
 dht DHT;
 
-// initialize display
+// initialize display (RS,E,D4,D5,D6,D7)
 LiquidCrystal LCD(7,8,9,10,11,12);
 
 // define degree symbol
@@ -17,17 +17,17 @@ void pLoad(LiquidCrystal &obj) {
   for(int i=0;i<16;i++)
   {
     obj.print(".");
-    delay(150);
+    delay(100);
   }
   obj.clear();
 }
 
 void setup() {
-  delay(1000);
+  delay(500);
   Serial.begin(9600);
   LCD.begin(16, 2);
   pLoad(LCD);
-  delay(1000);
+  delay(500);
 }
 
 void loop() {
@@ -37,8 +37,7 @@ void loop() {
   // make int to drop decimals
   int T = (int)DHT.temperature;
   int H = (int)DHT.humidity;
-  float f = (DHT.temperature*1.8)+32; // do calc as float to retain accuracy then convert
-  int F = (int)f;
+  int F = (DHT.temperature*1.8)+32; 
   
   // print to serial
   Serial.print(T);
