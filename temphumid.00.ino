@@ -23,11 +23,11 @@ void pLoad(LiquidCrystal &obj) {
 }
 
 void setup() {
-  delay(500);
+  delay(250); 
   Serial.begin(9600);
   LCD.begin(16, 2);
-  pLoad(LCD);
-  delay(500);
+  pLoad(LCD); 
+  delay(250); 
 }
 
 void loop() {
